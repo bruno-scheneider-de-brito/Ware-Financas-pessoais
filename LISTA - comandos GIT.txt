@@ -1,0 +1,29 @@
+
+
+COMANDOS GIT 
+
+git status - verifica tudo que esta na pasta
+
+
+git add .  - adiciona todos os arquivos no controle de versao
+
+
+
+git commit -m "primeiro commit"
+
+git push - falta isso 
+
+
+==============CONFIGURACAO INICIAL ================
+git config --global user.email "brunobritis8@gmail.com"
+
+
+git config --global user.name "Bruno Scheneider de Brito"
+
+
+/* cofigurando repositorio 
+git remote add origin https://github.com/bruno-scheneider-de-brito/Ware-Financas-pessoais
+
+
+
+git push --set-upstream origin master

@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<title>Ware Finance | Responsivoesign</title>
+	<link rel="stylesheet" type="text/css" href="css/inicio_dashboar_css.css" >
+	<link rel="stylesheet" type="text/css" href="css/pagina_gastando.css" >
+	
+	
+</head>
+
+
+
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+
+/*
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+	
+}
+*/
+
+/*
+.details .lancar_gasto{
+	position: relative;
+	display: grid;
+	min-height: 400px;
+	background: var(--white);
+	box-shadow: 0 7px 25px rgba(0,0,0,0.10);
+	border-radius: 10px;
+	padding: 12px;
+}
+
+*/
+
+.lancar_gasto{
+	justify-content: space-between;
+	align-items: flex-start;
+	color: var(--blue);
+	
+
+}
+
+
+.lancar_cabecalho{
+	display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--blue);
+    padding-bottom: 0.3rem;
+}
+
+.lancar_cabecalho h2{
+	font-weight: 600;
+	color:var(--blue);
+
+}
+
+
+.select_menu_lancamento{
+	position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+	padding-left: 0.8rem;
+	outline-color: var(--blue);
+	border: var(--blue);
+
+}
+
+
+form{
+	display: grid;
+}
+
+
+li{
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+}
+
+.ul_dados_lanca, .ul_dados_pagto, .ul_hearder_parcelamento, .ul_botoes{
+	display: flex;
+	list-style: none;
+	gap: 0.1rem;
+	align-items: end;
+	
+}
+
+
+
+.bloco_lancamento .ul_dados_lanca li label,
+.bloco_lancamento .ul_dados_pagto li label,
+.bloco_lancamento .ul_parcelamento li label,
+.bloco_lancamento .ul_botoes li label{
+	position: relative;
+	background: var(--white);
+	top: 20px;
+	left: 5px;
+	font-size: 0.8em;
+	padding: 2px;
+	width: max-content;
+
+}
+
+
+.bloco_lancamento ul li input, .bloco_lancamento ul li select{
+	min-height: 2em;
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+}
+
+
+
+
+.fm_gastando.ul_hearder_parcelamento li {
+	display: inline-block;
+	width: 100%;
+	min-height: 2.4em;
+	margin-top: 20px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px solid var(--blue);
+    background: var(--blue);
+    color: var(--white);
+    padding: 5px;
+
+}
+
+.bloco_lancamento .ul_dados_lanca li:nth-child(4) input::-webkit-outer-spin-button, 
+.bloco_lancamento .ul_dados_lanca li:nth-child(4) input::-webkit-inner-spin-button {
+	/*RETIRA ROLAGEM NUMÉRICA DOS INPUTS */
+ 	display: none; 
+
+ }
+
+ 
+.ul_parcelamento{
+	display: grid;
+	grid-template-columns: 0.2fr 0.3fr 1.2fr 0.5fr 1fr 0.1fr;
+	gap: 1px;
+	//display: flex;
+}
+
+.ul_parcelamento li{
+		height: 2.3rem;
+		width: 100%;
+}
+
+
+.ul_parcelamento li input, .ul_parcelamento li select{
+		width: inherit;
+}
+
+/* BOTOES EDITAR E EXCLUIR   */
+.ul_parcelamento .li_botoes{
+	display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.1rem;
+}
+
+
+
+.tam1{
+	flex-grow: 1;
+}
+
+
+.tam2{
+	flex-grow: 2;
+}
+
+.tam3{
+	flex-grow: 3;
+}
+
+
+
+.reduzir{
+	flex-shrink: 1; 
+
+}
+
+.nao_reduzir{
+	flex-shrink: 0;
+}
+
+input{
+
+	padding-left: 0.8rem;
+	outline-color: var(--blue);
+}
+
+select{
+	opacity: 1;
+	outline-color: var(--blue);
+}
+
+
+.input.disabled,
+.select.disabled{
+	background: var(--grey); 
+	opacity: 1;
+	outline-color: var(--grey);
+	border: 1px solid var(--cinza);
+
+}
+
+
+.ul_parcelamento input[type="date"]{
+    width: 100%;
+    display: inline-grid;
+   	height: 1.3rem;
+    padding-top: 0.9rem;
+}
+
+
+input[name="inp_pgto_vlr_parcela"]::-webkit-outer-spin-button, 
+input[name="inp_pgto_vlr_parcela"]::-webkit-inner-spin-button {
+ 	display: none; 
+
+ }
+
+
+
+
+
+
+/*
+input[type="date"]::-webkit-inner-spin-button{
+	-webkit-appearance: none;
+	
+}
+
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    display: none;
+}
+
+
+input[type="date" i] {
+    align-items: center;
+    display: -webkit-inline-flex;
+    font-family: monospace;
+    padding-inline-start: 1px;
+    cursor: default;
+    overflow: hidden;
+    padding: 0px;
+    text-align: right;
+}
+
+
+
+input[type=date]::-webkit-clear-button
+{
+    display: none; 
+    -webkit-appearance: none; 
+}
+
+
+::-webkit-datetime-edit { }
+::-webkit-datetime-edit-fields-wrapper { }
+::-webkit-datetime-edit-text { }
+::-webkit-datetime-edit-month-field { }
+::-webkit-datetime-edit-day-field { }
+::-webkit-datetime-edit-year-field { }
+::-webkit-inner-spin-button { }
+::-webkit-calendar-picker-indicator { }
+
+
+input[type='date']::-webkit-clear-button,
+input[type='date']::-webkit-inner-spin-button {
+    display: none;
+}
+*/
+
+button {
+	border: 2px solid var( --blue);
+	height: 2em;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+button img{
+	filter: invert(1);
+    width: 20px;
+  
+}
+
+/* ====================================
+
+	DESIGNER RESPONSIVIDADE 
+
+
+=====================================*/
+
+
+
+/*
+================   RESPONSIVO TABLET ==================
+*/
+
+@media (max-width: 991px){
+
+
+
+}
+
+
+
+
+@media (max-width:768px){
+
+
+
+
+}
+
+
+/*
+================   RESPONSIVO CELULAR ==================
+*/
+@media (max-width: 480px){
+
+
+
+	.bloco_lancamento .ul_dados_lanca li label,
+	.bloco_lancamento .ul_dados_pagto li label,
+	.bloco_lancamento .ul_parcelamento li label,
+	.bloco_lancamento .ul_botoes li label{
+		position: relative;
+		background: var(--white);
+		top: 5px;
+		left: 5px;
+		font-size: 0.8em;
+		padding: 2px;
+		width: max-content;
+		
+	}
+
+
+	/*.lancar_gasto ul li{
+		display: inline-block;
+		width: 100%;
+	}*/
+
+	.ul_dados_lanca, .ul_dados_pagto{
+		display: flex;
+		flex-direction: column;
+		gap: 0px;
+	}
+
+
+	.ul_dados_lanca li, .ul_dados_pagto li{
+		display: inline-block;
+		width: 100%;
+	}
+
+
+	.bloco_lancamento ul li input, .bloco_lancamento ul li select{
+		min-height: 2em;
+	    border-radius: 5px;
+	    border: 1px solid var(--blue);
+	    width: inherit;
+	}
+	
+
+	.bloco_lancamento .ul_parcelamento label{
+		display: none;
+
+	}
+
+
+	button{
+		width: 100%;
+		padding: 2px;
+		margin-top: 2px;
+	}
+
+	.bloco_lancamento .ul_parcelamento button{
+		width: 10px;
+		height: 1.3rem;
+		border-radius: 3px;
+
+	}
+	
+
+	.bloco_lancamento .ul_parcelamento button img{
+		width: 11px;
+
+	}
+
+
+	.ul_parcelamento{
+		display: grid;
+		grid-template-columns: 0.2fr 0.3fr 1.2fr 0.5fr 1fr 0.1fr;
+		box-shadow:  0px 1px 3px 1px #c2c2ce;
+		border-radius: 5px;
+		height: 1.9rem;
+		gap: 1px;
+	}
+
+
+	.ul_parcelamento li{
+		width: 100%;
+		height: auto;
+		position: relative;
+    	bottom: 8px;
+    	
+	}
+
+	
+	.ul_parcelamento li .input, .ul_parcelamento li .select{
+		font-size: 0.55rem;
+		height: 1.3rem;
+		padding-left: 0.1rem;
+		border-radius: 3px;
+	}
+
+
+
+	.input.disabled, .select.disabled {
+	    background: var(--grey);
+	    opacity: 1;
+	    outline-color: var(--grey);
+	    border: 1px solid var(--cinza);
+	    border-radius: 3px;
+	    align-content: center;
+	}
+
+
+}
+
+</style>
+
+
+
+<body>
+
+	<!-- ================== LANÇAMENTO BLOCO_GASTANDO ====================== -->
+	<div class="lancar_gasto"> 
+		<div class="lancar_cabecalho">
+			<h2>Lançamento</h2>
+				<select type="text" class="select_menu_lancamento" id="select_menu_lancamento" name="select_menu_lancamento">
+					<option></option>
+					<option value="novo">Novo</option>
+					<option value="previsao">Previsão</option>
+				</select>
+
+			<!--
+			<button href="#" class="btn button">Novo</button>
+			<button href="#" class="btn button">Previsão</button>
+			-->
+		</div>
+
+		<div class="bloco_lancamento">
+
+			
+
+		</div>
+
+
+
+
+	</div>
+
+
+
+</body>
+
+
+
+</html>
+
+

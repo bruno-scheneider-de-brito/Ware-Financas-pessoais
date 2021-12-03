@@ -1,0 +1,127 @@
+
+
+	<!-- ================== LANÇAMENTO GASTANDO ====================== -->
+		<form id="fm_gastando" class="fm_gastando" autocomplete="off">
+			<h2>Gastando</h2>
+
+				<!-- ==== DADOS LANÇAMENTO ===== -->
+				<ul class="ul_dados_lanca">
+					<li><label>Tipo Gasto</label>   <br> 
+						<input type="search" id="inp_gasto_tipo" name="inp_gasto_tipo" list="comb_adr_evento2" required autofocus size="">
+							<datalist  id="comb_adr_evento2">
+								<option plano_conta="4545">Conta</option>
+								<option plano_conta="123">supermercado</option>
+								<option plano_conta="878">restaurante</option>
+								<option plano_conta="654">netflix</option>
+								<option plano_conta="786">festa</option>
+								<option plano_conta="787">transporte</option>
+								<option plano_conta="45">viagem</option>
+							</datalist>
+						
+					</li>
+					<li><label>Histórico:</label>   <br> 
+						<input type="text" id="inp_gasto_historico" name="inp_gasto_historico"  maxlength="" size="" required="required">
+					</li>
+					<li><label>Data:</label>       <br> 
+						<input type="date" id="inp_gasto_data" name="inp_gasto_data"  maxlength="" size="" required="required">
+					</li>
+					<li><label>Valor:</label>       <br> 
+						<input type="number" id="inp_gasto_valor" name="inp_gasto_valor"  maxlength="" size="" required="required">
+					</li>
+
+
+			    	<!--<li>
+							 <button type="" class="btn next" id="btn_gasto_next"> > </button>
+					</li>-->
+			
+				</ul>
+
+
+				<!-- ==== DADOS PAGAMENTO ===== -->
+				<ul class="ul_dados_pagto" style="display:none;">
+					<li><label>Tipo pagto:</label><br> 
+							<select type="text" id="select_pgto_tipo" name="select_pgto_tipo" class="select disabled" disabled="true" required="required" >
+								<option value="0">       </option>
+								<option value="1">à vista</option>
+								<option value="2">a prazo</option>	
+				   			 </select>
+					<li><label>Forma pagamento</label> <br> 
+							<select type="text" id="select_pgto_forma" name="select_pgto_forma" class="select disabled" disabled="true" required="required">
+								<option value="0"></option>
+								<option value="1">Dinheiro</option>
+								<option value="2">Cartão de Crédito</option>
+								<option value="3">Cartão de Débito</option>
+								<option value="4">Cheque pré-datado</option>
+								<option value="5">Carne da Loja</option>
+								<option value="6">Débito em Conta</option>
+							 </select>
+					</li>
+					<li><label>Quant. parcelas:</label><br> 
+							<input type="number" id="select_pgto_quant_parcelas" name="select_pgto_quant_parcelas"  maxlength="" size="" class="input disabled" required="required" disabled="true">
+					</li>
+
+				</ul>
+
+
+
+				<!-- ====  PAGAMENTO EM PARCELAS ===== -->
+				<ul class="fm_gastando ul_hearder_parcelamento" id="header_parcelamento" style="display:none;">
+					<li>
+						Parcelamento 
+					</li>
+				</ul>
+				<ul class="ul_parcelamento" style="display:none;">
+					<li><label>Nº parcela: </label>      <br> 
+						<input type="text" name="inp_pgto_num_parcela"  maxlength="" size="" class="input disabled" required="required" disabled="true">
+					</li>
+					<li><label>Data Vencimento:</label>   <br> 
+						<input type="date"  name="inp_pgto_vencimento"  maxlength="10" size="10" class="input disabled" required="required" disabled="true">
+					</li>
+					<li><label>Valor parcela:</label>     <br> 
+						<input type="number"  name="inp_pgto_vlr_parcela"  maxlength="" size="" class="input disabled" required="required" disabled="true">
+					</li>
+					<li><label>Form pagto:</label>     <br> 
+							<select type="text" name="select_pgto_forma_parcela" class="input disabled" disabled="true">
+								<option value="0"></option>
+								<option value="1">Dinheiro</option>
+								<option value="2">Cartão de Crédito</option>
+								<option value="3">Cartão de Débito</option>
+								<option value="4">Cheque pré-datado</option>
+								<option value="5">Carne da Loja</option>
+								<option value="6">Débito em Conta</option>
+							 </select>
+					</li>
+					<li>
+						<button class="btn editar"><img src="icones/pencil-sharp.svg"></button>
+						<button class="btn excluir"><img src="icones/trash-sharp.svg"></button>
+					</li>
+			
+				</ul>
+
+
+
+
+
+				<!-- ==== QUADRO DE BOTOES FINALIZAÇÃO ===== -->
+				<ul class="ul_botoes">
+					<li><label>Repetir:</label><br> 
+							<select type="text" id="select_gasto_repetir" name="select_gasto_repetir">
+									<option value="0">Não</option>
+									<option value="1">Sim</option>	
+									<option value="2">Hoje</option>		
+
+			    			 </select>
+			    	</li>
+			    	<li>
+						<button class="btn"> Salvar </button>
+					</li>
+					<li>
+						<button class="btn"> Cancelar </button>
+					</li>
+				</ul>
+
+
+
+		</form>
+
+
