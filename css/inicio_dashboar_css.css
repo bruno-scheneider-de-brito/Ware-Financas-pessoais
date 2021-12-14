@@ -599,6 +599,7 @@ assim é possivel fazer alterar nas cores de fundo de das linhas da figura svg
 }
 
 
+
 .btn{
 	position: relative;
 	padding: 5px 10px;
@@ -609,6 +610,30 @@ assim é possivel fazer alterar nas cores de fundo de das linhas da figura svg
 
 }
 
+
+.btn.pago{
+	position: relative;
+	padding: 5px 10px;
+	background: #8de02c;
+	text-decoration: none;
+	color: var(--white);
+	border: 2px solid #8de02c;
+	border-radius: 6px;
+
+}
+
+
+
+.btn.avencer{
+	position: relative;
+	padding: 5px 10px;
+	background: orange;
+	text-decoration: none;
+	color: var(--white);
+	border: 2px solid orange;
+	border-radius: 6px;
+
+}
 
 .details table{
 	width: 100%;
