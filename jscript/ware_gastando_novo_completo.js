@@ -1,220 +1,36 @@
 
 
 
+import {pagina_gastando, modulo_ware_gastando} from './ware_gastando.js'; 
 
-export var gastar = () => {
 
 
-	var gastar = "teste funcao Modulo Gastando";
-
-	return gastar;
-
-
-}
-
-import {modulo_ativo,arquivo_html} from './ware_aimport.js';
-
-
-console.log(arquivo_html);
-
-
-export var pagina_gastando = "";	
-export var modulo_ware_gastando = "";
-
-
-//---------------------------------------------------------------------------
-//            OBSERVA MUTAÇÁO DO CONTAINER 
-//------------------------------------------------------------------------------
-var target = document.querySelector(".area01_container");
-var observer = new MutationObserver( Observa_mutacao_modulos );
-var config = { childList: true, attributes: true };
-  
-	function Observa_mutacao_modulos( mutacoes ) {
-	  mutacoes.forEach(function(mutation) {
-	    //console.log( mutation.type );
-	    
-	    Modulo_gastando.Carrega_2vez_pagina_automatica();
-	    //console.log(arquivo_html);
-
-	  });
-
-	}
-  
-observer.observe( target, config );
-
-
-
-
-
-export var Modulo_gastando = {
-
-
-
-	Carrega_1vez_pagina_automatica: document.querySelectorAll(".select_menu_lancamento").forEach( element => {
-		
-
-			function Carrega_automatico1(){
-
-			//------- ELEMENTO OPTION PRIMEIRO DA LISTA -----------------
-			let pagina_option = element.selectedOptions[0].value;
-									
-					 pagina_gastando = pagina_option;
-
-
-					// CHAMADA AJAX - solicita paginas 
-					//======================================================================
-
-					fetch(`pagina_gastando_${pagina_option}.html`).then( (response) => {
-
-						return response.text();
-
-					}).then( function(pagina_carregar){
-
-						
-						document.querySelector(".bloco_lancamento").innerHTML = pagina_carregar; 
-
-
-					});
-			}
-			Carrega_automatico1();
-
-			
-
-		}),
-
-
-	Carrega_2vez_pagina_automatica:  
-
-			function Carrega_automatico2(){
-
-
-				document.querySelectorAll(".select_menu_lancamento").forEach( element => {
-
-				//------- ELEMENTO OPTION PRIMEIRO DA LISTA -----------------
-				let pagina_option = element.selectedOptions[0].value;
-
-					pagina_gastando = pagina_option;
-
-
-					//console.log("pagina", pagina_option);
-				
-					// CHAMADA AJAX - solicita paginas 
-					//======================================================================
-
-					fetch(`pagina_gastando_${pagina_option}.html`).then( (response) => {
-
-						return response.text();
-
-					}).then( function(pagina_carregar_automatica){
-
-						
-						document.querySelector(".bloco_lancamento").innerHTML = pagina_carregar_automatica; 
-
-
-					});
-			
-				});
-
-			
-
-		},
-
-
-
-
-
-	Carrega_pagina_selecionada: document.querySelector("html").addEventListener("change", 
-			function Carrega_selecionada(element){
-
-
-				var element_list = element.target;
-			
-				//INTERPOLAR com $ - e template string
-				//--console.log(`pagina_gastando_${element_list.value}`);
-				//--console.log(element_list.classList.value);
-
-				if( element_list.classList.value.includes("menu") ){	
-					
-					pagina_gastando = element_list.value;
-
-						
-					// CHAMADA AJAX - solicita paginas 
-					//======================================================================
-
-					fetch(`pagina_gastando_${element_list.value}.html`).then( (response) => {
-
-						return response.text();
-
-					}).then( function(pagina_carregar){
-
-								
-						document.querySelector(".bloco_lancamento").innerHTML = pagina_carregar; 
-
-
-
-					});
-
-				}
-
-			}),
-
-
-
-}
-
-
-//---------------------------------------------------------------------------
-//            OBSERVA MUTAÇÁO DO BLOCO_LANÇAMENTO : 
-//------------------------------------------------------------------------------
-var target = document.querySelector(".bloco_lancamento");
-var observer = new MutationObserver( Observa_mutacao_menu_lancamento );
-var config = { childList: true, attributes: true };
-  
-	function Observa_mutacao_menu_lancamento( mutacoes ) {
-	  mutacoes.forEach(function(mutation) {
-	    //console.log( mutation.type );
-		   pagina_gastando = document.querySelector(".select_menu_lancamento").selectedOptions[0].value;
-
-		    console.log(pagina_gastando);
-
-
-		  modulo_ware_gastando =  import(`./ware_gastando_${pagina_gastando}.js`);
-		  		  
-	 
-	  });
-
-	}
-  
-observer.observe( target, config );
-
-
-
-
-
-/*
-var Modulo_gastando_completo = {
+export var Modulo_gastando_completo = {
 
 	Validacao_ul_dados_lanca: document.querySelector("html").addEventListener("keyup", 
 			function Valida_ul_dados_lanca(event){
 
-				event.preventDefault();
+				if(pagina_gastando === 'novo_completo'){
 
-				let inputs_preenchidos = Array.from(document.querySelectorAll(".ul_dados_lanca input")).every( (input) => input.value !== '');
+					event.preventDefault();
 
-				if(inputs_preenchidos){
+					let inputs_preenchidos = Array.from(document.querySelectorAll(".ul_dados_lanca input")).every( (input) => input.value !== '');
 
-					document.querySelector(".ul_dados_pagto").style.display = "flex";
+					if(inputs_preenchidos){
 
-					document.querySelectorAll(".ul_dados_pagto input").forEach( (inp) => {
-						inp.classList.remove("disabled");
-						inp.removeAttribute("disabled");
-					});
-					document.querySelectorAll(".ul_dados_pagto select").forEach( (inp) => {
-						inp.classList.remove("disabled");
-						inp.removeAttribute("disabled");
-					});
+						document.querySelector(".ul_dados_pagto").style.display = "flex";
 
-					
+						document.querySelectorAll(".ul_dados_pagto input").forEach( (inp) => {
+							inp.classList.remove("disabled");
+							inp.removeAttribute("disabled");
+						});
+						document.querySelectorAll(".ul_dados_pagto select").forEach( (inp) => {
+							inp.classList.remove("disabled");
+							inp.removeAttribute("disabled");
+						});
+
+						
+					}
 				}
 
 
@@ -224,81 +40,84 @@ var Modulo_gastando_completo = {
 	Select_tipo_pagto: document.querySelector("html").addEventListener("change", 
 			function Lista_periodo_pagto(element){
 
-				let element_list = element.target;
+				//if(pagina_gastando === 'novo_completo'){
 
-				if(element_list.id === 'select_pgto_tipo'){
+					let element_list = element.target;
 
-			
-					//-- REMOVE A SELEÇÃO FORMA PGTO ANTERIOR ---
-					document.querySelectorAll(".li_vista_prazo").forEach( (li) => {
-						li.remove();
-
-					});
+					if(element_list.id === 'select_pgto_tipo'){
 
 				
-					var tipo_pgto_selecionado = "";
+						//-- REMOVE A SELEÇÃO FORMA PGTO ANTERIOR ---
+						document.querySelectorAll(".li_vista_prazo").forEach( (li) => {
+							li.remove();
 
-					switch(element_list.value){
+						});
 
+					
+						var tipo_pgto_selecionado = "";
 
-						case '0':
-							tipo_pgto_selecionado = `<li >
-
-													</li>`;
-
-													//        OCULTA - QUANT PARCELAS E GRID DE PARCELAMENTO
-													//------------------------------------------------------------------
-													document.querySelector("#select_pgto_quant_parcelas").classList.add("disabled");
-													document.querySelector("#select_pgto_quant_parcelas").setAttribute("disabled", true);
-													document.querySelector("#select_pgto_quant_parcelas").parentElement.classList.remove("quant_parcela");
-													document.querySelectorAll(".ul_hearder_parcelamento")[0].style.display = "none";				
-													document.querySelectorAll(".ul_parcelamento").forEach( ul => ul.remove() );
-
-							break;
+						switch(element_list.value){
 
 
-	
-						case '1':
-							tipo_pgto_selecionado = `<li class="li_vista_prazo"><label>Data pagamento</label>   <br> 
-														<input type="date" id="inp_pgto_data" name="inp_pgto_data required autofocus size="">
+							case '0':
+								tipo_pgto_selecionado = `<li >
+
+														</li>`;
+
+														//        OCULTA - QUANT PARCELAS E GRID DE PARCELAMENTO
+														//------------------------------------------------------------------
+														document.querySelector("#select_pgto_quant_parcelas").classList.add("disabled");
+														document.querySelector("#select_pgto_quant_parcelas").setAttribute("disabled", true);
+														document.querySelector("#select_pgto_quant_parcelas").parentElement.classList.remove("quant_parcela");
+														document.querySelectorAll(".ul_hearder_parcelamento")[0].style.display = "none";				
+														document.querySelectorAll(".ul_parcelamento").forEach( ul => ul.remove() );
+
+								break;
+
+
+		
+							case '1':
+								tipo_pgto_selecionado = `<li class="li_vista_prazo"><label>Data pagamento</label>   <br> 
+															<input type="date" id="inp_pgto_data" name="inp_pgto_data required autofocus size="">
+																
 															
-														
+														</li>`;
+
+														document.querySelector("#select_pgto_quant_parcelas").parentElement.classList.remove("quant_parcela");
+														document.querySelector("#select_pgto_quant_parcelas").parentElement.setAttribute("style", 'display:none;');
+
+								break;
+
+							case '2':
+								tipo_pgto_selecionado	= `<li class="li_vista_prazo"><label>Intervalo:</label>     <br> 
+														<select type="text" id="select_pgto_intervalo_parcela" name="select_pgto_intervalo_parcela" >
+															<option value="0"></option>
+															<option value="30">Mensal</option>
+															<option value="15">Quinzenal</option>
+															<option value="365">Anual</option>
+															<option value="45">45 dias</option>
+														</select>
 													</li>`;
 
-													document.querySelector("#select_pgto_quant_parcelas").parentElement.classList.remove("quant_parcela");
-													document.querySelector("#select_pgto_quant_parcelas").parentElement.setAttribute("style", 'display:none;');
+													document.querySelector("#select_pgto_quant_parcelas").parentElement.removeAttribute("style");
+													document.querySelector("#select_pgto_quant_parcelas").removeAttribute("disabled", true);
+														
 
-							break;
+								break;
+						}
 
-						case '2':
-							tipo_pgto_selecionado	= `<li class="li_vista_prazo"><label>Intervalo:</label>     <br> 
-													<select type="text" id="select_pgto_intervalo_parcela" name="select_pgto_intervalo_parcela" >
-														<option value="0"></option>
-														<option value="30">Mensal</option>
-														<option value="15">Quinzenal</option>
-														<option value="365">Anual</option>
-														<option value="45">45 dias</option>
-													</select>
-												</li>`;
 
-												document.querySelector("#select_pgto_quant_parcelas").parentElement.removeAttribute("style");
-												document.querySelector("#select_pgto_quant_parcelas").removeAttribute("disabled", true);
-													
+						//------TRANSFORMA STRING em OBJETO HTML ----------					
+						var parser = new DOMParser();
+						var doc_HTML = parser.parseFromString(tipo_pgto_selecionado, "text/html");
 
-							break;
+
+						//---------LANÇA OPÇÃO DA FOFMA PAGAMENTO  ------------------
+						element_list.parentElement.after(doc_HTML.querySelector('li') );
 					}
 
+				//}
 
-					//------TRANSFORMA STRING em OBJETO HTML ----------					
-					var parser = new DOMParser();
-					var doc_HTML = parser.parseFromString(tipo_pgto_selecionado, "text/html");
-
-
-					//---------LANÇA OPÇÃO DA FOFMA PAGAMENTO  ------------------
-					element_list.parentElement.after(doc_HTML.querySelector('li') );
-
-
-				}
 			}),
 
 	Select_forma_pagto: document.querySelector("html").addEventListener("change", 
@@ -634,7 +453,7 @@ var Modulo_gastando_completo = {
 								if( i > 1){
 									array_parcelas.push({
 
-														//venc_parc: Modulo_gastando.Gerar_vencimento(quant_parcelas[0].value,data_gasto)[i], 
+														//venc_parc: Modulo_gastando_completo.Gerar_vencimento(quant_parcelas[0].value,data_gasto)[i], 
 														vlr_parc: valor_parcela.toFixed(2)
 
 														});
@@ -646,7 +465,7 @@ var Modulo_gastando_completo = {
 									let ultima_parcela = valor_gasto.value - ( valor_parcela.toFixed(2) *(quant_parcelas[0].value-1));
 									array_parcelas.push({
 
-														//venc_parc: Modulo_gastando.Gerar_vencimento(quant_parcelas[0].value,data_gasto)[i], 
+														//venc_parc: Modulo_gastando_completo.Gerar_vencimento(quant_parcelas[0].value,data_gasto)[i], 
 														vlr_parc: ultima_parcela.toFixed(2)
 
 														});
@@ -658,7 +477,7 @@ var Modulo_gastando_completo = {
 							array_parcelas.forEach( (parc,idx) => { 
 
 								parc['num_parc'] = idx+1;
-								parc['venc_parc'] =  Modulo_gastando.Gerar_vencimento(quant_parcelas[0].value,data_gasto)[idx];
+								parc['venc_parc'] =  Modulo_gastando_completo.Gerar_vencimento(quant_parcelas[0].value,data_gasto)[idx];
 								parc['forma_pgto_id'] = id_forma_pgto;
 								parc['forma_pgto'] = forma_pgto;
 								parc['plano_conta_pgto'] = plano_conta;
@@ -836,4 +655,3 @@ var Modulo_gastando_completo = {
 
 }
 
-*/

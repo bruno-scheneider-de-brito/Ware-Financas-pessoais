@@ -56,7 +56,7 @@ function Carrega_paginas(element){
 		//importaçao dinamica
 		modulo_ativo = import(`./ware_${element.getAttribute("id").slice(7,999)}.js`);
 
-		
+
 
 	}
 

@@ -1,7 +1,7 @@
 
 
 	<!-- ================== LANÇAMENTO GASTANDO ====================== -->
-		<form id="fm_gastando" class="fm_gastando" autocomplete="off">
+		<form id="fm_gastando" class="fm_gastando novo_simples" autocomplete="off">
 			<h2>Gastando</h2>
 
 				<!-- ==== DADOS LANÇAMENTO ===== -->
@@ -30,9 +30,6 @@
 					</li>
 
 
-			    	<!--<li>
-							 <button type="" class="btn next" id="btn_gasto_next"> > </button>
-					</li>-->
 			
 				</ul>
 
@@ -102,7 +99,7 @@
 
 
 
-				<!-- ==== QUADRO DE BOTOES FINALIZAÇÃO ===== -->
+			<!-- ==== QUADRO DE BOTOES FINALIZAÇÃO ===== -->
 				<ul class="ul_botoes">
 					<li><label>Repetir:</label><br> 
 							<select type="text" id="select_gasto_repetir" name="select_gasto_repetir">
@@ -111,7 +108,7 @@
 								<option value="2">Hoje</option>		
 			    			 </select>
 			    	</li>
-			    	<li style="display: none;"><label>Quando:</label>     <br> 
+			    	<li class="li_repete_gasto" style="display: none;"><label>Quando:</label>     <br> 
 							<select type="text" name="select_gasto_repetir_quando" class="input disabled" disabled="true">
 								<option value="0"></option>
 								<option value="1">Diário</option>
@@ -120,14 +117,18 @@
 								<option value="4">Anual</option>
 							 </select>
 					</li>
-					<li style="display: none;"><label>Até:</label>   <br> 
+					<li class="li_repete_gasto" style="display: none;"><label>Até:</label>   <br> 
 						<input type="date"  name="inp_gasto_venc_repeticao"  maxlength="10" size="10" class="input disabled" required="required" disabled="true">
 					</li>
 			    	<li>
-						<button class="btn pago"> Pagar e Salvar </button>
+			    	<li class="li_repete_gasto" style="display: none;"><label>Quantas vezes:</label>   <br> 
+						<input type="number"  name="inp_gasto_quant_repeticao"  maxlength="10" size="10" class="input disabled" required="required" disabled="true">
+					</li>
+			    	<li>
+						<button class="btn pago"> Pagar e Salvar</button>
 					</li>
 					<li>
-						<button class="btn avencer"> Aberto e Salvar </button>
+						<button class="btn avencer">Aberto e Salvar</button>
 					</li>
 				</ul>
 
